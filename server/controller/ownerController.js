@@ -1,7 +1,7 @@
 import User from "../Models/user.js";
 import Car from "../Models/car.js";
 import fs, { access } from 'fs';
-import imageKit from "../configs/imageKit.js"
+import imagekit from "../configs/imagekit.js";
 import Booking from "../Models/booking.js";
 import { receiveMessageOnPort } from "worker_threads";
 import { config } from "process";
@@ -31,14 +31,14 @@ export const addCar = async (req, res) => {
 
         // Upload Image to ImageKit 
         const fileBuffer = fs.readFileSync(imageFile.path)
-        const response = await imageKit.upload({
+        const response = await imagekit.upload({
             file: fileBuffer,
             fileName: imageFile.originalname,
             folder: '/cars'
         })
 
         // optimization through imagekit URL transformation
-        var optimizedImageUrl = imageKit.url({
+        var optimizedImageUrl = imagekit.url({
             path: response.filePath,
             transformation: [
                 { width: '1280' }, // width resizing
