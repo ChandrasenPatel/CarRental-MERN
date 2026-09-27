@@ -83,8 +83,8 @@ export const AppProvider = ({ children }) => {
         if (token) {
             axios.defaults.headers.common['Authorization'] = token
             fetchUser()
-            fetchCars()
         }
+        fetchCars()
     }, [token])
 
     const value = {
